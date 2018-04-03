@@ -41,7 +41,7 @@
         </div>
       </div>
       <mu-row gutter>
-        <mu-col width="20" tablet="50" desktop="100">
+        <mu-col width="20" tablet="50" desktop="10">
           <mu-paper class="room-list" :zDepth="2" rounded>
             <div class="icon-item">
               <mu-icon value="home"/>
@@ -55,40 +55,39 @@
             </div>
           </mu-paper>
         </mu-col>
-        <mu-col width="80" tablet="50" desktop="100">
+        <mu-col width="80" tablet="50" desktop="90">
           <mu-paper class="room-detail" :zDepth="2" rounded>
             <div class="header">
               <span class="title">卧室</span>
               <span class="device-count">1个设备</span>
             </div>
             <div class="device-list">
-              <mobile-tear-sheet>
-                <mu-list>
-                  <mu-list-item title="柠檬wifi" class="device-item">
-                    <mu-avatar src="" slot="leftAvatar"/>
-                    <span slot="describe">
-                    设备在线
-                  </span>
-                    <mu-icon-menu slot="right" icon="more_vert" tooltip="操作">
-                      <mu-menu-item title="共享"/>
-                      <mu-menu-item title="删除"/>
-                    </mu-icon-menu>
-                  </mu-list-item>
-                  <mu-divider inset/>
-                  <mu-list-item title="空调">
-                    <mu-avatar src="" slot="leftAvatar"/>
-                    <span slot="describe">
-                    设备在线
-                  </span>
-                    <mu-icon-menu slot="right" icon="more_vert" tooltip="操作">
-                      <mu-menu-item title="共享"/>
-                      <mu-menu-item title="删除"/>
-                    </mu-icon-menu>
-                  </mu-list-item>
-                  <mu-divider inset/>
 
-                </mu-list>
-              </mobile-tear-sheet>
+              <mu-list>
+                <mu-list-item title="柠檬wifi" class="device-item">
+                  <mu-avatar src="" slot="leftAvatar"/>
+                  <span slot="describe">
+                    设备在线
+                  </span>
+                  <mu-icon-menu slot="right" icon="more_vert" tooltip="操作">
+                    <mu-menu-item title="共享"/>
+                    <mu-menu-item title="删除"/>
+                  </mu-icon-menu>
+                </mu-list-item>
+                <mu-divider inset/>
+                <mu-list-item title="空调">
+                  <mu-avatar src="" slot="leftAvatar"/>
+                  <span slot="describe">
+                    设备在线
+                  </span>
+                  <mu-icon-menu slot="right" icon="more_vert" tooltip="操作">
+                    <mu-menu-item title="共享"/>
+                    <mu-menu-item title="删除"/>
+                  </mu-icon-menu>
+                </mu-list-item>
+                <mu-divider inset/>
+
+              </mu-list>
             </div>
           </mu-paper>
         </mu-col>
@@ -112,12 +111,9 @@
   }
 
   .app-home {
-    position: absolute;
-    bottom: 56px;
-    top: 0;
-    width: 100%;
-    background: url("../../../static/image/background.jpg");
-    background-size: contain;
+
+    background-size: cover;
+    background-color: rgb(22,22,80);
   }
 
   .app-home .app-header {
@@ -162,6 +158,7 @@
   .app-home .app-content .common-info .row-1 .temperature .number {
     font-size: 50px;
   }
+
   .app-home .app-content .common-info .row-1 .temperature .unit {
     position: relative;
     left: -12px;
@@ -171,10 +168,12 @@
     display: inline-block;
     font-size: 10px;
   }
+
   .app-home .app-content .common-info .row-2 {
     position: relative;
     top: -16px;
   }
+
   .app-home .app-content .row {
     height: calc(100% - 88px);
   }
