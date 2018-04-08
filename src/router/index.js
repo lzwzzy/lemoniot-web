@@ -1,27 +1,62 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
 import Home from '@/components/home/Home'
 import User from '@/components/user/User'
-import App from '@/App'
+import Authorize from '@/components/authorize'
+import Oauth from '@/components/oauth'
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
-export default new Router({
-  routes: [
-    {
-      //默认跳转首页
-      path: '/',
-      redirect: Home
-    },
-    {
-      path: '/home',
-      name: 'home',
-      component: Home
-    },
-    {
-      path: '/user',
-      name: 'user',
-      component: User
+// noinspection JSAnnotator
+const routes = [
+  {
+    //默认跳转首页
+    path: '/',
+    redirect: Home
+  },
+  {
+    path: '/home',
+    name: 'home',
+    component: Home
+  },
+  {
+    path: '/user',
+    name: 'user',
+    component: User
+  },
+  {
+    path: '/authorize',
+    name: 'authorize',
+    component: Authorize
+  },
+  {
+    path: '/oauth',
+    name: 'oauth',
+    component: Oauth
+  }
+]
+
+
+export const router = new VueRouter({
+  mode: 'history',
+  routes
+});
+
+router.beforeEach((to, from, next) => {
+  console.log('123')
+  let user = localStorage.getItem('user')
+  if (!user) {
+    console.log('456')
+    if (to.path === '/authorize' || to.path === '/oauth') {
+      console.log(to.query)
+      next()
+    }else {
+      next({
+        path: '/authorize',
+        query: {visit: to.path}
+      })
     }
-  ]
+  } else {
+    next()
+  }
 })

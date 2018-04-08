@@ -3,10 +3,11 @@
     <div class="user-top">
       <div class="user-info">
         <div class="avatar">
-          <img src="../../../static/image/lemon.png"/>
+          {{authUser}}
+          <!--<img :src="{{authUser}}"/>-->
         </div>
         <div class="user-name">
-        <span>刘志伟</span>
+        <span>{{}}</span>
         </div>
         <div class="device-count">
         <span>3个智能设备</span>
@@ -17,11 +18,13 @@
 </template>
 
 <script>
-  import conf from '../../config/index'
+  import { mapState } from 'vuex'
   export default {
     name: "user",
-    created() {
-      window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + conf.wx.appid + "&redirect_uri=" + encodeURIComponent(conf.wx.redirect_uri) + "&response_type=code&scope=" + conf.wx.scope + "&state=STATE#wechat_redirect"
+    computed: {
+      ...mapState([
+        'authUser'
+      ])
     }
   }
 </script>
