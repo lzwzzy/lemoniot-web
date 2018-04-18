@@ -19,7 +19,7 @@
         }
         this.$http.login(data).then(res => {
           console.log(res)
-          localStorage.setItem('user', res.user)
+          this.$store.dispatch('setAuthUser', res.user)
           self.goto(data.visit)
         }, error => {
 

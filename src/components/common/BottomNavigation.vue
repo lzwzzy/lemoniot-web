@@ -13,12 +13,20 @@
 export default {
   data () {
     return {
-      bottomNav: this.$route.path.split('/')[1],
+
+    }
+  },
+  computed: {
+    bottomNav: {
+      get() {
+        //通过计算属性确定当前active值
+        return this.$route.path.split('/')[1]
+      }
     }
   },
   methods: {
     handleChange (val) {
-      this.bottomNav = val
+      // this.bottomNav = val
     }
   }
 }

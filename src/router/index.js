@@ -4,6 +4,7 @@ import Home from '@/components/home/Home'
 import User from '@/components/user/User'
 import Authorize from '@/components/authorize'
 import Oauth from '@/components/oauth'
+import store from '../store'
 
 Vue.use(VueRouter)
 
@@ -43,10 +44,7 @@ export const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  console.log('123')
-  let user = localStorage.getItem('user')
-  if (!user) {
-    console.log('456')
+  if (!store.state.user.authUser) {
     if (to.path === '/authorize' || to.path === '/oauth') {
       console.log(to.query)
       next()

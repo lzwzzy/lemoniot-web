@@ -3,11 +3,10 @@
     <div class="user-top">
       <div class="user-info">
         <div class="avatar">
-          {{authUser}}
-          <!--<img :src="{{authUser}}"/>-->
+          <img :src="userInfo.headImgUrl"/>
         </div>
         <div class="user-name">
-        <span>{{}}</span>
+        <span>{{userInfo.nickname}}</span>
         </div>
         <div class="device-count">
         <span>3个智能设备</span>
