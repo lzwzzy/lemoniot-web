@@ -4,11 +4,11 @@
       <div class="tool-item">
         <mu-flexbox class="mt8">
           <mu-flexbox-item class="home-name">
-            <span class="word">刘志伟的家</span>
+            <span class="word">{{userInfo.nickname}}的家</span>
             <mu-icon class="tool-icon" value="keyboard_arrow_right"/>
           </mu-flexbox-item>
-          <mu-flexbox-item class="add-device-button">
-            <mu-icon class="tool-icon" value="developer_board"/>
+          <mu-flexbox-item class="add-device-button" >
+            <mu-icon class="tool-icon" value="developer_board" @click="goto('/newDeviceList')"/>
           </mu-flexbox-item>
         </mu-flexbox>
       </div>
@@ -48,10 +48,10 @@
               <div class="icon-item-word">常用</div>
             </div>
             <div class="boundary"></div>
-
-            <div class="icon-item">
+          
+            <div class="icon-item" v-for="room in rooms" key="room.id">
               <mu-icon value="home"/>
-              <div class="icon-item-word">默认房间</div>
+              <div class="icon-item-word">{{room.name}}</div>
             </div>
           </mu-paper>
         </mu-col>
@@ -59,12 +59,12 @@
           <mu-paper class="room-detail" :zDepth="2" rounded>
             <div class="header">
               <span class="title">卧室</span>
-              <span class="device-count">1个设备</span>
+              <span class="device-count">2个设备</span>
             </div>
             <div class="device-list">
 
               <mu-list>
-                <mu-list-item title="柠檬wifi" class="device-item">
+                <mu-list-item title="柠檬网关" class="device-item">
                   <mu-avatar src="" slot="leftAvatar"/>
                   <span slot="describe">
                     设备在线
@@ -75,7 +75,7 @@
                   </mu-icon-menu>
                 </mu-list-item>
                 <mu-divider inset/>
-                <mu-list-item title="空调">
+                <mu-list-item title="柠檬开关">
                   <mu-avatar src="" slot="leftAvatar"/>
                   <span slot="describe">
                     设备在线
@@ -98,7 +98,10 @@
 
 <script>
   export default {
-    name: "home"
+    name: "home",
+    beforeCreate() {
+      this.$store.dispatch('changeNavState', true)
+    }
   }
 </script>
 

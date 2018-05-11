@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     handleChange (val) {
-      // this.bottomNav = val
+      this.$store.dispatch('changeNavState', true)
     }
   }
 }

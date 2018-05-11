@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view class="app-modal"></router-view>
-    <bottom-navigation class="app-bottom-nav"></bottom-navigation>
+    <bottom-navigation class="app-bottom-nav" v-if="isShowNavigateBar"></bottom-navigation>
   </div>
 </template>
 

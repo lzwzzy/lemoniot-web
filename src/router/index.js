@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/components/home/Home'
 import User from '@/components/user/User'
+import NewDeviceList from '@/components/newDeviceList'
 import Authorize from '@/components/authorize'
 import Oauth from '@/components/oauth'
 import store from '../store'
@@ -34,6 +35,11 @@ const routes = [
     path: '/oauth',
     name: 'oauth',
     component: Oauth
+  },
+  {
+    path: '/newDeviceList',
+    name: 'newDeviceList',
+    component: NewDeviceList
   }
 ]
 

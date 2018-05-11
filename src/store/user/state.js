@@ -1,3 +1,5 @@
 export default {
-  authUser: null
+  authUser: null,
+  devices: null,
+  rooms: null
 }

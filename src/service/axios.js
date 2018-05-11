@@ -35,3 +35,16 @@ export function post(config) {
       })
   })
 }
+export function get(config) {
+  return new Promise((resolve, reject) => {
+    axios.get(config.url)
+      .then(response => {
+        resolve(response);
+      }, err => {
+        reject(err);
+      })
+      .catch((error) => {
+        reject(error)
+      })
+  })
+}

@@ -9,7 +9,7 @@
         <span>{{userInfo.nickname}}</span>
         </div>
         <div class="device-count">
-        <span>3个智能设备</span>
+        <span>{{devices.length}}个智能设备</span>
         </div>
       </div>
     </div>
@@ -21,9 +21,10 @@
   export default {
     name: "user",
     computed: {
-      ...mapState([
-        'authUser'
-      ])
+    
+    },
+    beforeCreate() {
+      this.$store.dispatch('changeNavState', true)
     }
   }
 </script>
