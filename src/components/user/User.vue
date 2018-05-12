@@ -6,7 +6,7 @@
           <img :src="userInfo.headImgUrl"/>
         </div>
         <div class="user-name">
-        <span>{{userInfo.nickname}}</span>
+        <span>{{userInfo.name}}</span>
         </div>
         <div class="device-count">
         <span>{{devices.length}}个智能设备</span>

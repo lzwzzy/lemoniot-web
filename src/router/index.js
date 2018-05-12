@@ -2,6 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/components/home/Home'
 import User from '@/components/user/User'
+import RoomList from '@/components/room/roomList'
+import AddRoom from '@/components/room/addRoomList'
+import EditRoom from '@/components/room/editRoom'
 import NewDeviceList from '@/components/newDeviceList'
 import Authorize from '@/components/authorize'
 import Oauth from '@/components/oauth'
@@ -25,6 +28,21 @@ const routes = [
     path: '/user',
     name: 'user',
     component: User
+  },
+  {
+    path: '/room/roomList',
+    name: 'roomList',
+    component: RoomList
+  },
+  {
+    path: '/room/addRoom',
+    name: 'addRoom',
+    component: AddRoom
+  },
+  {
+    path: '/room/:id/editRoom',
+    name: 'editRoom',
+    component: EditRoom
   },
   {
     path: '/authorize',
@@ -54,7 +72,7 @@ router.beforeEach((to, from, next) => {
     if (to.path === '/authorize' || to.path === '/oauth') {
       console.log(to.query)
       next()
-    }else {
+    } else {
       next({
         path: '/authorize',
         query: {visit: to.path}

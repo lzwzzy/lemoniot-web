@@ -10,25 +10,14 @@
       </mu-flexbox> -->
       <mu-list>
     <mu-sub-header>添加新设备</mu-sub-header>
-    <mu-list-item title="Mike Li">
-      <mu-avatar src="../assets/chazuo.png" slot="leftAvatar"/>
-      <mu-icon value="chat_bubble" slot="right"/>
+    <mu-list-item title="柠檬网关">
+      <mu-avatar src="./static/image/wangguan.png" slot="leftAvatar"/>
     </mu-list-item>
-    <mu-list-item title="Maco Mai">
-      <mu-avatar src="/images/avatar2.jpg" slot="leftAvatar"/>
-      <mu-icon value="chat_bubble" slot="right"/>
+    <mu-list-item title="柠檬开关">
+      <mu-avatar src="./static/image/chazuo.png" slot="leftAvatar"/>
     </mu-list-item>
-    <mu-list-item title="Alex Qin">
-      <mu-avatar src="/images/avatar3.jpg" slot="leftAvatar"/>
-      <mu-icon value="chat_bubble" slot="right"/>
-    </mu-list-item>
-    <mu-list-item title="Allen Qun">
-      <mu-avatar src="/images/avatar4.jpg" slot="leftAvatar"/>
-      <mu-icon value="chat_bubble" slot="right"/>
-    </mu-list-item>
-    <mu-list-item title="Myron Liu">
-      <mu-avatar src="/images/uicon.jpg" slot="leftAvatar"/>
-      <mu-icon value="chat_bubble" slot="right"/>
+    <mu-list-item title="柠檬温湿度计">
+      <mu-avatar src="./static/image/wenshidu.png" slot="leftAvatar"/>
     </mu-list-item>
   </mu-list>
   </div>
@@ -47,6 +36,9 @@ export default {
 <style scoped>
 .device-list {
   bottom: 0;
+}
+.device-list .mu-avatar {
+  background-color: #fff;
 }
 .device-list .device-item {
   height: 150px;
