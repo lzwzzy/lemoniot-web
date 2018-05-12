@@ -49,39 +49,27 @@
             </div>
             <div class="boundary"></div>
           
-            <div class="icon-item" v-for="room in rooms" key="room.id">
-              <mu-icon value="home"/>
-              <div class="icon-item-word">{{room.name}}</div>
+            <div class="icon-item" :class="{active: roomIsActive}" v-for="(room, index) in rooms" :key="index">
+              <mu-icon value="home" @click="changeRoom(room)"/>
+              <div class="icon-item-word" >{{room.name}}</div>
             </div>
           </mu-paper>
         </mu-col>
         <mu-col width="80" tablet="50" desktop="90">
           <mu-paper class="room-detail" :zDepth="2" rounded>
             <div class="header">
-              <span class="title">卧室</span>
-              <span class="device-count">2个设备</span>
+              <span class="title">{{mRoom.name}}</span>
+              <span class="device-count">{{mRoom.devices.length}}个设备</span>
             </div>
             <div class="device-list">
 
               <mu-list>
-                <mu-list-item title="柠檬网关" class="device-item">
+                <mu-list-item :title="device.name" class="device-item" v-for="(device, index) in mRoom.devices" :key="index">
                   <mu-avatar src="" slot="leftAvatar"/>
                   <span slot="describe">
                     设备在线
                   </span>
                   <mu-icon-menu slot="right" icon="more_vert" tooltip="操作">
-                    <mu-menu-item title="共享"/>
-                    <mu-menu-item title="删除"/>
-                  </mu-icon-menu>
-                </mu-list-item>
-                <mu-divider inset/>
-                <mu-list-item title="柠檬开关">
-                  <mu-avatar src="" slot="leftAvatar"/>
-                  <span slot="describe">
-                    设备在线
-                  </span>
-                  <mu-icon-menu slot="right" icon="more_vert" tooltip="操作">
-                    <mu-menu-item title="共享"/>
                     <mu-menu-item title="删除"/>
                   </mu-icon-menu>
                 </mu-list-item>
@@ -99,8 +87,32 @@
 <script>
   export default {
     name: "home",
+    data() {
+      return {
+        roomIsActive: false,
+        mRoom: {
+          devices:[
+          ]
+        }
+      }
+    },
     beforeCreate() {
       this.$store.dispatch('changeNavState', true)
+      this.$http.rooms(this.$store.state.user.authUser.userId).then(
+            res => {
+              this.$store.dispatch("setRooms", res.rooms);
+            },
+            error => {}
+          );
+    },
+    mounted(){
+      
+    },
+    methods: {
+      changeRoom(room){
+        this.mRoom = room
+        this.roomIsActive = true
+      }
     }
   }
 </script>
@@ -237,13 +249,16 @@
     padding: 6px;
   }
 
-  .icon-item {
+  .app-content .icon-item {
     cursor: pointer;
     transition: transform 150ms ease-out;
     position: relative;
     padding: 10px;
     font-size: 14px;
     text-align: center;
+  }
+  .app-content .icon-item.active{
+    color: #19be6b;
   }
 
   .icon-item .icon-item-word {
