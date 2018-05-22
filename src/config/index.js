@@ -4,7 +4,7 @@ export default {
   },
   wx: {
     appid: 'wx863a2fdffc5b7050',
-    redirect_uri: 'http://lemoniot.cn/oauth',
+    redirect_uri: 'https://lemoniot.cn/oauth',
     scope: 'snsapi_userinfo'
   }
 }
