@@ -28,6 +28,10 @@
     bottom: 0;
     width: 100%;
   }
+  .mu-avatar img{
+    border-radius: 0%;
+}
+
   .app-modal {
     position: absolute;
     bottom: 56px;

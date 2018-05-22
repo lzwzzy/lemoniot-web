@@ -49,10 +49,12 @@
             </div>
             <div class="boundary"></div>
 
-            <div class="icon-item" :class="{active: roomIsActive}" v-for="(room, index) in rooms" :key="index">
-              <mu-icon value="home" @click="changeRoom(room)"/>
+<div class="room-list-midle">
+            <div class="icon-item" @click="changeRoom(room), roomIsActive = index" :class="{active: index==roomIsActive}" v-for="(room, index) in rooms" :key="index">
+              <mu-icon value="home" />
               <div class="icon-item-word" >{{room.name}}</div>
             </div>
+</div>
             <div class="room-settings" @click="goto('/room/roomList')">
               <mu-divider />
               <div class="icon-item">
@@ -70,8 +72,8 @@
             <div class="device-list">
 
               <mu-list>
-                <mu-list-item :title="device.name" class="device-item" v-for="(device, index) in mRoom.devices" :key="index">
-                  <mu-avatar src="" slot="leftAvatar"/>
+                <mu-list-item :title="device.name" class="device-item" v-for="(device, index) in mRoom.devices" :key="index" @click="deviceOnCLick(device)">
+                  <mu-avatar :src="'./static/image/wangguan.png'" slot="leftAvatar"/>
                   <span slot="describe">
                     设备在线
                   </span>
@@ -95,7 +97,7 @@ export default {
   name: "home",
   data() {
     return {
-      roomIsActive: false,
+      roomIsActive: null,
       mRoom: {
         devices: []
       }
@@ -113,8 +115,21 @@ export default {
   mounted() {},
   methods: {
     changeRoom(room) {
-      this.mRoom = room;
-      this.roomIsActive = true;
+      this.$http.getRoom(room.roomId).then(
+        res => {
+          this.mRoom = res.room;
+        },
+        error => {}
+      );
+    },
+    deviceOnCLick(device) {
+      switch (device.type) {
+        case "gateway":
+          this.goto("/device/gateway?deviceId=" + device.deviceId);
+          break;
+        default:
+          break;
+      }
     }
   }
 };
@@ -179,7 +194,7 @@ export default {
 
 .app-home .app-content .common-info .row-1 .temperature .unit {
   position: relative;
-  top:40px;
+  top: 40px;
   left: 50px;
 }
 
@@ -209,11 +224,15 @@ export default {
 .app-home .app-content .room-list {
   height: 100%;
 }
+.app-home .app-content .room-list .room-list-midle {
+  overflow: auto;
+  height: 266px;
+}
 
-.app-home .app-content .room-list .room-settings{
-    position: absolute;
-    bottom: 4px;
-    left: 4px;
+.app-home .app-content .room-list .room-settings {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
 }
 .app-home .app-content .room-list .room-settings .mu-divider {
   background-color: gray;
@@ -249,7 +268,11 @@ export default {
 .app-home .app-content .room-detail .device-list {
 }
 
-.app-home .app-content .room-detail .device-list .device-item {
+.app-home .app-content .room-detail .device-list .device-item .mu-avatar {
+    background-color: #fff;
+}
+.app-home .app-content .room-detail .device-list .device-item .mu-avatar img{
+    border-radius: 50% !important;
 }
 
 .app-home .app-content .room-detail .device-list .device-item .mu-item-title {

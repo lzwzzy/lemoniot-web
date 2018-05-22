@@ -5,6 +5,7 @@ import User from '@/components/user/User'
 import RoomList from '@/components/room/roomList'
 import AddRoom from '@/components/room/addRoomList'
 import EditRoom from '@/components/room/editRoom'
+import gateway from '@/components/device/gateway'
 import NewDeviceList from '@/components/newDeviceList'
 import Authorize from '@/components/authorize'
 import Oauth from '@/components/oauth'
@@ -43,6 +44,11 @@ const routes = [
     path: '/room/:id/editRoom',
     name: 'editRoom',
     component: EditRoom
+  },
+  {
+    path: '/device/gateway',
+    name: 'gateway',
+    component: gateway
   },
   {
     path: '/authorize',
