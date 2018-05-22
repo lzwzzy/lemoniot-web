@@ -4,7 +4,7 @@ import conf from '../config'
 
 axios.defaults.timeout = 10000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
-axios.defaults.baseURL = conf.baseUrl();
+axios.baseURL = conf.baseUrl();
 
 
 axios.interceptors.request.use((config) => {
