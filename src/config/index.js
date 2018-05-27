@@ -1,6 +1,6 @@
 export default {
   baseUrl: function () {
-    return process.env.NODE_ENV === 'development' ? '//lemond.free.ngrok.cc' : '//api.neho.top'
+    return process.env.NODE_ENV === 'development' ? '//lemoniot.viphk.ngrok.org' : '//api.neho.top'
   },
   wx: {
     appid: 'wx863a2fdffc5b7050',

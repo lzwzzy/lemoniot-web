@@ -73,7 +73,7 @@
 
               <mu-list>
                 <mu-list-item :title="device.name" class="device-item" v-for="(device, index) in mRoom.devices" :key="index" @click="deviceOnCLick(device)">
-                  <mu-avatar :src="'./static/image/wangguan.png'" slot="leftAvatar"/>
+                  <mu-avatar :src="'./static/image/' + device.type + '.png'" slot="leftAvatar"/>
                   <span slot="describe">
                     设备在线
                   </span>
