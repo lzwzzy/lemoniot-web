@@ -9,6 +9,7 @@ axios.defaults.baseURL = conf.baseUrl();
 
 axios.interceptors.request.use((config) => {
   //请求之前
+  console.log(axios.defaults.baseURL)
   return config;
 }, (error) => {
   return Promise.reject(error);
